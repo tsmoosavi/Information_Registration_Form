@@ -11,9 +11,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/form"
         android:background="#DAF4CA"
-        android:textSize="24sp"
+        android:text="@string/form"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -23,69 +23,74 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:ems="10"
         android:hint="@string/id"
         android:inputType="number"
         android:maxLength="10"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/birthplace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:ems="10"
         android:hint="@string/birthplace"
         android:inputType="textPersonName"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:ems="10"
         android:hint="@string/address"
         android:inputType="textPersonName"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/PostalCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:ems="10"
         android:hint="@string/PostalCode"
         android:inputType="number"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:text="@string/gender"
-        android:textSize="24sp"
-        android:layout_marginTop="10dp" />
+        android:textSize="16sp" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp">
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -95,7 +100,7 @@
             android:gravity="center"
             android:text="@string/male"
             android:textSize="24sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="3dp"/>
 
         <RadioButton
             android:id="@+id/radioButton"
@@ -105,16 +110,16 @@
             android:gravity="center"
             android:text="@string/female"
             android:textSize="24sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="3dp"/>
 
 
     </RadioGroup>
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/register"
+        android:text="ثبت اطلاعات"
         android:textSize="20sp" />
 
 

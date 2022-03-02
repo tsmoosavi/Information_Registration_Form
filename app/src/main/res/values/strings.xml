@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Information Registration Form</string>
+    <string name="viewInfo">مشاهده اطلاعات ثبت شده</string>
+    <string name="form">فرم ثبت اطللاعات</string>
+    <string name="name">نام و نام خانوادگی</string>
+    <string name="id">کد ملی</string>
+    <string name="birthplace">محل تولد</string>
+    <string name="address">آدرس</string>
+    <string name="PostalCode">کد پستی</string>
+    <string name="gender">جنسیت:</string>
+    <string name="male">مرد</string>
+    <string name="female">زن</string>
+    <string name="birthPlaceView">محل تولد:</string>
+    <string name="addressView">آدرس:</string>
+    <string name="PostalCodeView">کد پستی:</string>
+    <string name="genderView">جنسیت:</string>
+    <string name="changeInfo">تغییر اطلاعات</string>
+    <string name="idView">کد ملی:</string>
+    <string name="register">ثبت اطلاعات</string>
 </resources>
