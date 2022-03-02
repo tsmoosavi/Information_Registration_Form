@@ -1,6 +1,7 @@
 package com.example.informationregistrationform
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,14 +18,18 @@ class MainActivity2 : AppCompatActivity() {
 
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
-        binding.idView.text = shPref.getInt("id",0).toString()
-        binding.birthPlaceView.text = shPref.getString( "birthPlace","")
-        binding.addressView.text = shPref.getString("address","")
-        binding.PostalCodeView.text = shPref.getInt("postalCode", 0).toString()
+        binding.idView.text = shPref.getString("id","کد ملی")
+        binding.birthPlaceView.text = shPref.getString( "birthPlace","محل تولد")
+        binding.addressView.text = shPref.getString("address","آدرس")
+        binding.PostalCodeView.text = shPref.getString("postalCode", "کد پستی")
         if (shPref.getBoolean("female",false)){
             binding.genderView.text = "female"
         }else{
             binding.genderView.text = "male"
+        }
+
+        binding.changeInfoBtn.setOnClickListener{
+            var backToFirstPage = Intent(this,MainActivity::class.java)
         }
 
     }

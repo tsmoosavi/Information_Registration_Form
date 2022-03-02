@@ -17,4 +17,5 @@
     <string name="changeInfo">تغییر اطلاعات</string>
     <string name="idView">کد ملی:</string>
     <string name="register">ثبت اطلاعات</string>
+    <string name="newUser">ورود کاربر جدید</string>
 </resources>

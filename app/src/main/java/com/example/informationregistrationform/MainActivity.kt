@@ -14,14 +14,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initView()
+
+            initView()
+
     }
 
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
         val editor = shPref.edit()
         binding.register?.setOnClickListener {
-            if (binding.name.text.isNullOrBlank() || binding.id.text.isNullOrBlank() || binding.birthplace.text.isNullOrBlank() || binding.address.text.isNullOrBlank() || binding.PostalCode.text.isNullOrBlank() || binding.radioButton.isChecked || binding.radioButton2.isChecked) {
+            if (binding.name.text.isNullOrBlank() || binding.id.text.isNullOrBlank() || binding.birthplace.text.isNullOrBlank() || binding.address.text.isNullOrBlank() || binding.PostalCode.text.isNullOrBlank()) {
                 if (binding.name.text.isNullOrBlank()) {
                     binding.name.error = "فیلد را پر کنید."
                 }
@@ -40,18 +42,18 @@ class MainActivity : AppCompatActivity() {
                 if (binding.PostalCode.text.isNullOrBlank()) {
                     binding.PostalCode.error = "فیلد را پر کنید."
                 }
-                if (!(binding.radioButton.isChecked || binding.radioButton2.isChecked)) {
-                    binding.gender.error = "جنسیت خود را انتخاب کنید."
-                }
+//                if (!(binding.radioButton.isChecked || binding.radioButton2.isChecked)) {
+//                    binding.gender.error = "جنسیت خود را انتخاب کنید."
+//                }
             } else {
                 editor.putString("name", binding.name.text.toString())
-                editor.putInt("id", binding.id.text.toString().toInt())
+                editor.putString("id", binding.id.text.toString())
                 editor.putString("birthPlace", binding.birthplace.text.toString())
                 editor.putString("address", binding.address.text.toString())
-                editor.putInt("postalCode", binding.PostalCode.text.toString().toInt())
+                editor.putString("postalCode", binding.PostalCode.text.toString())
                 editor.putBoolean("female", binding.radioButton.isChecked)
                 editor.putBoolean("male", binding.radioButton2.isChecked)
-                var goToPage2 = Intent(this, ActivityMain2Binding::class.java)
+                var goToPage2 = Intent(this, MainActivity2::class.java)
                 startActivity(goToPage2)
             }
 
