@@ -15,12 +15,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
-        if ( shPref != null){
-            var goToPage2 = Intent(this, MainActivity2::class.java)
-            startActivity(goToPage2)
-        }else{
+//        if ( shPref.contains(""))
+//        if ( shPref != null){
+//            var goToPage2 = Intent(this, MainActivity2::class.java)
+//            startActivity(goToPage2)
+//        }else{
             initView()
-        }
+//        }
 
 
 
@@ -33,22 +34,22 @@ class MainActivity : AppCompatActivity() {
             if (binding.name.text.isNullOrBlank()) {
                     binding.name.error = "فیلد را پر کنید."
                 }
-            if (binding.id.text.isNullOrBlank()) {
+            else if (binding.id.text.isNullOrBlank()) {
                     binding.id.error = "فیلد را پر کنید."
                 }
-            if(binding.id.text.toString().length != 10){
+            else if(binding.id.text.toString().length != 10){
                     binding.id.error = "کد ملی باید 10 رقم باشد."
                 }
-            if (binding.birthplace.text.isNullOrBlank()) {
+            else if (binding.birthplace.text.isNullOrBlank()) {
                     binding.birthplace.error = "فیلد را پر کنید."
                 }
-            if (binding.address.text.isNullOrBlank()) {
+            else if (binding.address.text.isNullOrBlank()) {
                     binding.address.error = "فیلد را پر کنید."
                 }
-            if (binding.PostalCode.text.isNullOrBlank()) {
+            else if (binding.PostalCode.text.isNullOrBlank()) {
                     binding.PostalCode.error = "فیلد را پر کنید."
                 }
-            if (!binding.radioButton.isChecked && !binding.radioButton2.isChecked) {
+            else if (!binding.radioButton.isChecked && !binding.radioButton2.isChecked) {
                     binding.gender.error = "جنسیت خود را انتخاب کنید."
                 }
             else {
