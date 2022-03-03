@@ -14,8 +14,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
+        if ( shPref != null){
+            var goToPage2 = Intent(this, MainActivity2::class.java)
+            startActivity(goToPage2)
+        }else{
             initView()
+        }
+
+
 
     }
 
