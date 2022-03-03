@@ -32,6 +32,12 @@ class MainActivity2 : AppCompatActivity() {
             var backToFirstPage = Intent(this,MainActivity::class.java)
             startActivity(backToFirstPage)
         }
+        binding.newUser.setOnClickListener{
+            shPref.edit().clear().apply()
+            var backToFirstPage = Intent(this,MainActivity::class.java)
+            startActivity(backToFirstPage)
+
+        }
 
     }
 }
