@@ -30,6 +30,7 @@ class MainActivity2 : AppCompatActivity() {
 
         binding.changeInfoBtn.setOnClickListener{
             var backToFirstPage = Intent(this,MainActivity::class.java)
+            startActivity(backToFirstPage)
         }
 
     }
