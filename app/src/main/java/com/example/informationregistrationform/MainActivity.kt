@@ -27,25 +27,7 @@ class MainActivity : AppCompatActivity() {
             initView()
 //        }
     }
-    val startForResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                result: ActivityResult ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val receivData = result.data
-                binding.name.setText(receivData?.getStringExtra("name_edit"))
-                binding.id.setText(receivData?.getStringExtra("id_edit")).toString()
-                binding.birthplace.setText(receivData?.getStringExtra("birthPlace_edit"))
-                binding.address.setText(receivData?.getStringExtra("address_edit"))
-                binding.PostalCode.setText(receivData?.getStringExtra("postalCode_edit")).toString()
-                if (receivData?.getStringExtra("female") == "female"){
-                    binding.radioButton.isChecked
-                }else{
-                    binding.radioButton2.isChecked
-                }
 
-                Toast.makeText(this , "اطلاعات خود را ویرایش کنید.", Toast.LENGTH_SHORT).show()
-            }
-        }
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
         val editor = shPref.edit()
@@ -80,9 +62,10 @@ class MainActivity : AppCompatActivity() {
                 editor.putBoolean("female", binding.radioButton.isChecked)
                 editor.putBoolean("male", binding.radioButton2.isChecked)
                 editor.apply()
+
                 var goToPage2 = Intent(this, MainActivity2::class.java)
                 startActivity(goToPage2)
-                startForResult.launch(goToPage2)
+
             }
 
 
