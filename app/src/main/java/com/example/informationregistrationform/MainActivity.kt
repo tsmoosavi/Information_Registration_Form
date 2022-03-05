@@ -1,10 +1,14 @@
 package com.example.informationregistrationform
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.informationregistrationform.databinding.ActivityMain2Binding
 import com.example.informationregistrationform.databinding.ActivityMainBinding
 
@@ -22,11 +26,26 @@ class MainActivity : AppCompatActivity() {
 //        }else{
             initView()
 //        }
-
-
-
     }
+    val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val receivData = result.data
+                binding.name.setText(receivData?.getStringExtra("name_edit"))
+                binding.id.setText(receivData?.getStringExtra("id_edit")).toString()
+                binding.birthplace.setText(receivData?.getStringExtra("birthPlace_edit"))
+                binding.address.setText(receivData?.getStringExtra("address_edit"))
+                binding.PostalCode.setText(receivData?.getStringExtra("postalCode_edit")).toString()
+                if (receivData?.getStringExtra("female") == "female"){
+                    binding.radioButton.isChecked
+                }else{
+                    binding.radioButton2.isChecked
+                }
 
+                Toast.makeText(this , "اطلاعات خود را ویرایش کنید.", Toast.LENGTH_SHORT).show()
+            }
+        }
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
         val editor = shPref.edit()
@@ -54,16 +73,18 @@ class MainActivity : AppCompatActivity() {
                 }
             else {
                 editor.putString("name", binding.name.text.toString())
-                editor.putString("id", binding.id.text.toString())
+                editor.putString("id", binding.id.text.toString()).toString()
                 editor.putString("birthPlace", binding.birthplace.text.toString())
                 editor.putString("address", binding.address.text.toString())
-                editor.putString("postalCode", binding.PostalCode.text.toString())
+                editor.putString("postalCode", binding.PostalCode.text.toString()).toString()
                 editor.putBoolean("female", binding.radioButton.isChecked)
                 editor.putBoolean("male", binding.radioButton2.isChecked)
                 editor.apply()
                 var goToPage2 = Intent(this, MainActivity2::class.java)
                 startActivity(goToPage2)
+                startForResult.launch(goToPage2)
             }
+
 
 
         }

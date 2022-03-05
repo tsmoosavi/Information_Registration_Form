@@ -18,10 +18,10 @@ class MainActivity2 : AppCompatActivity() {
 
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
-        binding.idView.text = shPref.getString("id","کد ملی")
+        binding.idView.text = shPref.getString("id","کد ملی").toString()
         binding.birthPlaceView.text = shPref.getString( "birthPlace","محل تولد")
         binding.addressView.text = shPref.getString("address","آدرس")
-        binding.PostalCodeView.text = shPref.getString("postalCode", "کد پستی")
+        binding.PostalCodeView.text = shPref.getString("postalCode", "کد پستی").toString()
         if (shPref.getBoolean("female",false)){
             binding.genderView.text = "female"
         }else{
