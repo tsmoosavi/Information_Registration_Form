@@ -31,6 +31,18 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
         val editor = shPref.edit()
+        binding.name.setText(shPref.getString("name",""))
+        binding.id.setText(shPref.getString("id",""))
+        binding.birthplace.setText(shPref.getString( "birthPlace",""))
+        binding.address.setText( shPref.getString("address",""))
+        binding.PostalCode.setText(shPref.getString("postalCode",""))
+        if (shPref.getBoolean("female",false)){
+            binding.radioButton.isChecked = true
+        }else if (shPref.getBoolean("male",false)){
+            binding.radioButton2.isChecked = true
+        }
+
+
         binding.register?.setOnClickListener {
             if (binding.name.text.isNullOrBlank()) {
                     binding.name.error = "فیلد را پر کنید."
@@ -55,10 +67,10 @@ class MainActivity : AppCompatActivity() {
                 }
             else {
                 editor.putString("name", binding.name.text.toString())
-                editor.putString("id", binding.id.text.toString()).toString()
+                editor.putString("id", binding.id.text.toString())
                 editor.putString("birthPlace", binding.birthplace.text.toString())
                 editor.putString("address", binding.address.text.toString())
-                editor.putString("postalCode", binding.PostalCode.text.toString()).toString()
+                editor.putString("postalCode", binding.PostalCode.text.toString())
                 editor.putBoolean("female", binding.radioButton.isChecked)
                 editor.putBoolean("male", binding.radioButton2.isChecked)
                 editor.apply()
