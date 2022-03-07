@@ -30,6 +30,11 @@ class MainActivity : AppCompatActivity() {
 
             initView()
         }
+        buttonListener()
+
+    }
+
+    private fun buttonListener() {
         binding.register?.setOnClickListener {
             if (validatData()){
                 var goToPage2 = Intent(this, MainActivity2::class.java)
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
