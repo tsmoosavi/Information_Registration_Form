@@ -9,12 +9,14 @@ import com.example.informationregistrationform.databinding.ActivityMain2Binding
 
 class MainActivity2 : AppCompatActivity() {
     lateinit var binding :ActivityMain2Binding
-    var editPermission = false
+    var editPermission = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
+        buttonsListener()
+
     }
     private fun initView() {
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
@@ -29,22 +31,29 @@ class MainActivity2 : AppCompatActivity() {
         }else{
             null
         }
+    }
+    fun buttonsListener(){
         binding.changeInfoBtn.setOnClickListener{
             editPermission = true
             val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
             val editor = shPref.edit()
             editor.putBoolean("permissionForEdit", editPermission)
-            var backToFirstPage = Intent(this,MainActivity::class.java)
-            startActivity(backToFirstPage) }
-        binding.newUser.setOnClickListener{
-//            editPermission = false
-            shPref.edit().clear().apply()
-//            val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
-//            val editor = shPref.edit()
-//            editor.putBoolean("permissionForEdit", editPermission)
-            var backToFirstPage = Intent(this,MainActivity::class.java)
+            editor.apply()
+            var backToFirstPage = Intent(this, MainActivity::class.java)
             startActivity(backToFirstPage)
-        }
 
+        }
+        binding.newUser.setOnClickListener{
+            val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
+            shPref.edit().clear().apply()
+            editPermission = true
+            val editor = shPref.edit()
+            editor.putBoolean("permissionForEdit", editPermission)
+            editor.apply()
+            var backToFirstPage = Intent(this, MainActivity::class.java)
+            startActivity(backToFirstPage)
+
+        }
     }
+
 }
