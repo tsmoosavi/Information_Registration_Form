@@ -16,16 +16,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
         val shPref: SharedPreferences = getSharedPreferences("saveInfo", Context.MODE_PRIVATE)
-//        if ( shPref.contains(""))
-//        if ( shPref != null){
-//            var goToPage2 = Intent(this, MainActivity2::class.java)
-//            startActivity(goToPage2)
-//        }else{
+        if (!shPref.getBoolean("permissionForEdit",false)){
+            if (shPref.getString("name",null) != null &&
+                shPref.getString("id",null)!= null &&
+                shPref.getString( "birthPlace",null)!= null &&
+                shPref.getString("address",null) != null &&
+                shPref.getString("postalCode", "کد پستی") != null){
+                var goToPage2 = Intent(this, MainActivity2::class.java)
+                startActivity(goToPage2)
+            }
+        }else{
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
             initView()
-//        }
+        }
     }
 
     private fun initView() {
@@ -41,7 +47,6 @@ class MainActivity : AppCompatActivity() {
         }else if (shPref.getBoolean("male",false)){
             binding.radioButton2.isChecked = true
         }
-
 
         binding.register?.setOnClickListener {
             if (binding.name.text.isNullOrBlank()) {
@@ -74,12 +79,11 @@ class MainActivity : AppCompatActivity() {
                 editor.putBoolean("female", binding.radioButton.isChecked)
                 editor.putBoolean("male", binding.radioButton2.isChecked)
                 editor.apply()
-
+//                editPermission = false
                 var goToPage2 = Intent(this, MainActivity2::class.java)
                 startActivity(goToPage2)
 
             }
-
 
 
         }
